@@ -1,21 +1,34 @@
 <template>
   <div>
-    <p>name: {{ user.id }}</p>
-    <p>karma: {{ user.karma }}</p>
-    <p>create: {{ user.created }}</p>
+    <user-profile  :info="userInfo" >
+      <template v-slot:username>
+        {{ userInfo.id }}
+      </template>
+      <template v-slot:time>
+        <span>{{ 'Joined ' + userInfo.created }}, </span>
+      </template>
+      <template v-slot:karma>
+        <span>{{ userInfo.karma }}</span>
+      </template>
+    </user-profile>
   </div>
 </template>
 
 <script>
+
+import UserProfile from '../components/UserProfile.vue'
 import { computed } from '@vue/runtime-core';
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex'
   
 export default {
-  setup() {
+  components: {
+    UserProfile
+  },
+    setup() {
     const route = useRoute();
     const store = useStore();
-    const user = computed(()=> {
+    const userInfo = computed(()=> {
       return store.state.user
     })
     const createApiUser = () => {
@@ -23,16 +36,12 @@ export default {
       store.dispatch('FETCH_USER',userName)
     }
 
+
     createApiUser();
 
     return {
-      user
+      userInfo
     }
   }
-
 }
 </script>
-
-<style>
-
-</style>

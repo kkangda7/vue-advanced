@@ -1,19 +1,14 @@
 <template>
   <div>
     <section>
-      <div class="user-container">
-        <div>
-          <i class="fas fa-user"></i>
-        </div>
-        <div class="user-description">
-          <div>
-            <router-link :to="`/user/${item.user}`">{{ item.user }}</router-link>
-          </div>
-          <div class="time">
-            {{ item.time_ago }}
-          </div>
-        </div>
-      </div>
+      <user-profile :info="item">
+        <template v-slot:username>
+          <router-link :to="`/user/${item.user}`">{{ item.user }}</router-link>
+        </template>
+        <template v-slot:time>
+          {{ 'Posted ' + item.time_ago }}
+        </template>
+      </user-profile>
       <h2>{{ item.title }}</h2>
     </section>
     <section>
@@ -26,8 +21,12 @@
 import { useStore } from 'vuex';
 import { useRoute } from 'vue-router'
 import { computed } from '@vue/runtime-core';
+import UserProfile from '../components/UserProfile.vue'
 
 export default {
+  components: {
+    UserProfile
+  },
   setup() {
     const store = useStore();
     const route = useRoute();

@@ -4,6 +4,7 @@ import AskView from '../views/AskView.vue'
 import JobsView from '../views/JobsView.vue'
 import ItemView from '../views/ItemView.vue'
 import UserView from '../views/UserView.vue'
+import SeachView from '../views/SeachView.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/jobs',
     name: 'jobs',
     component: JobsView
+  },
+  {
+    path: '/seach',
+    name: 'seach',
+    component: SeachView
   },
   {
     path: '/item/:id',

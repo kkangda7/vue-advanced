@@ -12,8 +12,8 @@ export default createStore({
     news: [],
     asks: [],
     jobs: [],
-    user: [],
-    item: []
+    user: {},
+    item: {}
   },
   getters: {
     // fecthedItem(state) {

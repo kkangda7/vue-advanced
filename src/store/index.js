@@ -42,6 +42,7 @@ export default createStore({
       fetchNewsList()
         .then(response => {
           commit('SET_NEWS', response.data);
+          return response
         })
         .catch(err => { console.log(err); })
     },

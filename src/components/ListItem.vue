@@ -62,17 +62,6 @@ export default {
           return store.state.jobs
         }
     })
-    const createApiNews = () => {
-      if(name === 'news') {
-        store.dispatch('FETCH_NEWS');
-      } else if(name === 'ask') {
-        store.dispatch('FETCH_ASK');
-      } else if(name === 'jobs') {
-        store.dispatch('FETCH_JOBS')
-      }
-    }
-    createApiNews();
-
 
     return {
       name,

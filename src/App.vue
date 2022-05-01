@@ -5,15 +5,41 @@
       <transition name="fade">
         <component :is="Component" :key="route.path" />
       </transition>
+      <loading-spinner :loading="loadingStaters"></loading-spinner>
     </router-view>
   </div>
 </template>
 
 <script>
 import ToolBar from "../src/components/ToolBar.vue"
+import LoadingSpinner from "./components/LoadingSpinner.vue"
+import emitter from "../src/utils/emiter"
+import { ref } from '@vue/reactivity'
 
 export default {
-  components: { ToolBar },
+  components: { 
+    ToolBar,
+    LoadingSpinner,
+  },
+  setup() {
+    const loadingStaters = ref(false)
+    const startSpinner = () => {
+      loadingStaters.value = true
+    }
+    const endSpinner = () => {
+      loadingStaters.value = false
+    };
+
+    const createSpinner = () => {
+      emitter.on('start:spinner', startSpinner )
+      emitter.on('end:spinner',endSpinner)
+    }
+    createSpinner();
+
+    return {
+      loadingStaters
+    }
+  }
 }
 </script>
 

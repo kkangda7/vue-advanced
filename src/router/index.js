@@ -5,6 +5,8 @@ import JobsView from '../views/JobsView.vue'
 import ItemView from '../views/ItemView.vue'
 import UserView from '../views/UserView.vue'
 import SeachView from '../views/SeachView.vue'
+import emiter from '@/utils/emiter'
+import store from '@/store'
 
 const routes = [
   {
@@ -14,17 +16,43 @@ const routes = [
   {
     path: '/news',
     name: 'news',
-    component: NewsView
+    component: NewsView,
+    beforeEnter: (to, from, next) => {
+      emiter.emit('start:spinner');
+      store.dispatch('FETCH_NEWS', to.name)
+        .then(() => {
+          emiter.emit('end:spinner')
+          next();
+        })
+        .catch(err => console.log(err))
+    }
   },
   {
     path: '/ask',
     name: 'ask',
-    component: AskView
+    component: AskView,
+    beforeEnter:(to, from, next) => {
+      emiter.emit('start:spinner')
+      store.dispatch('FETCH_ASK', to.name)
+        .then(() => {
+          emiter.emit('end:spinner')
+          next()
+        })
+        .catch(err => console.log(err))
+    }
   },
   {
     path: '/jobs',
     name: 'jobs',
-    component: JobsView
+    component: JobsView,
+    beforeEnter: (to, from, next) => {
+      emiter.emit('start:spinner')
+      store.dispatch('FETCH_JOBS', to.name)
+        .then(() => {
+          next()
+        })
+        .catch(err => console.log(err))
+    }
   },
   {
     path: '/seach',

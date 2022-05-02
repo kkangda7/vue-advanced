@@ -39,7 +39,7 @@ export default createStore({
   },
   actions: {
     FETCH_NEWS({ commit }) {
-      fetchNewsList()
+      return fetchNewsList()
         .then(response => {
           commit('SET_NEWS', response.data);
           return response
@@ -47,34 +47,38 @@ export default createStore({
         .catch(err => { console.log(err); })
     },
     FETCH_ASK({ commit }) {
-      fecthAskList()
+      return fecthAskList()
         .then((response) => {
-        commit('SET_ASK', response.data)
+          commit('SET_ASK', response.data)
+          return response
         })
         .catch((err) => {
           console.log(err);
         })
     },
     FETCH_JOBS({ commit }) {  
-      fecthJobsList()
+      return fecthJobsList()
         .then((response) => {
-        commit('SET_JOBS', response.data)
+          commit('SET_JOBS', response.data)
+          return response
         })
         .catch((err) => {
           console.log(err);
       })
     },
     FETCH_USER({ commit },name) {
-      fetchUserList(name)
+      return fetchUserList(name)
         .then((response) => {
-         commit('SET_USER', response.data)
+          commit('SET_USER', response.data)
+          return response
         })
       .catch(err => {console.log(err)})
     },
     FETCH_ITEM({ commit },item ) {
-      fecthItemList(item)
+      return fecthItemList(item)
         .then((response) => {
-        commit('SET_ITEM', response.data)
+          commit('SET_ITEM', response.data)
+          return response
         })
         .catch((err) => {
         console.log(err)

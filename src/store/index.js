@@ -38,33 +38,30 @@ export default createStore({
     }
   },
   actions: {
-    FETCH_NEWS({ commit }) {
-      return fetchNewsList()
-        .then(response => {
-          commit('SET_NEWS', response.data);
-          return response
-        })
-        .catch(err => { console.log(err); })
+    async FETCH_NEWS(context) {
+      const response = await fetchNewsList();
+      context.commit('SET_NEWS', response.data)
+      return response;
     },
-    FETCH_ASK({ commit }) {
-      return fecthAskList()
-        .then((response) => {
-          commit('SET_ASK', response.data)
-          return response
-        })
-        .catch((err) => {
-          console.log(err);
-        })
+    async FETCH_ASK({ commit }) {
+      try {
+        const response = await fecthAskList()
+        commit('SET_ASK', response.data)
+        return response
+      }
+      catch (err) {
+        console.log(err)
+      }
     },
-    FETCH_JOBS({ commit }) {  
-      return fecthJobsList()
-        .then((response) => {
-          commit('SET_JOBS', response.data)
-          return response
-        })
-        .catch((err) => {
-          console.log(err);
-      })
+    async FETCH_JOBS({ commit }) {  
+      try {
+        const response = await fecthJobsList()
+        commit('SET_JOBS', response.data)
+        return response
+      }
+      catch (err) {
+        console.log(err)
+      } 
     },
     FETCH_USER({ commit },name) {
       return fetchUserList(name)
@@ -83,7 +80,7 @@ export default createStore({
         .catch((err) => {
         console.log(err)
       })
-    }
+    },
   },
   modules: {
   }

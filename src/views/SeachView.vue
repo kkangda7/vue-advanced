@@ -1,22 +1,23 @@
 <template>
   <div id="seach">
-  <div class="search-wrapper">
-    <input type="text" v-model="search" placeholder="Search title.."/>
-  </div>
-  <div class="wrapper">
-    <div class="card" v-for="post in filteredList" :key="post">
-      <a v-bind:href="post.link" target="_blank">
-        <img v-bind:src="post.img"/>
-        <small>posted by: {{ post.author }}</small>
-        {{ post.title }}
-      </a>
+    <div class="search-wrapper">
+      <input type="text" v-model="search" placeholder="Search title.."/>
+    </div>
+    <div class="wrapper">
+      <div class="card" v-for="post in filteredList" :key="post">
+        <a v-bind:href="post.link" target="_blank">
+          <img v-bind:src="post.img"/>
+          <small>posted by: {{ post.author }}</small>
+          {{ post.title }}
+        </a>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
 import { computed, ref } from 'vue'
+
 
   class Post {
   constructor(title, link, author, img) {
@@ -91,11 +92,12 @@ export default {
         return post.title.toLowerCase().includes(search.value.toLowerCase())
       })
     })  
+
     
     return {
       search,
       postList,
-      filteredList
+      filteredList,
     }
   }
 }

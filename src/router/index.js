@@ -5,6 +5,7 @@ import JobsView from '../views/JobsView.vue'
 import ItemView from '../views/ItemView.vue'
 import UserView from '../views/UserView.vue'
 import SeachView from '../views/SeachView.vue'
+import AsyncView from '../views/AsyncView.vue'
 import emiter from '@/utils/emiter'
 import store from '@/store'
 
@@ -58,6 +59,11 @@ const routes = [
     path: '/seach',
     name: 'seach',
     component: SeachView
+  },
+  {
+    path: '/async',
+    name: 'async',
+    component: AsyncView
   },
   {
     path: '/item/:id',

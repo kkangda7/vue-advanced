@@ -6,6 +6,8 @@ import ItemView from '../views/ItemView.vue'
 import UserView from '../views/UserView.vue'
 import SeachView from '../views/SeachView.vue'
 import AsyncView from '../views/AsyncView.vue'
+import PagenationView from '../views/PagenationView.vue'
+import TabsView from '../views/TabsView.vue'
 import emiter from '@/utils/emiter'
 import store from '@/store'
 
@@ -64,6 +66,16 @@ const routes = [
     path: '/async',
     name: 'async',
     component: AsyncView
+  },
+  {
+    path: '/pagenation',
+    name: 'pagenation',
+    component: PagenationView
+  },
+  {
+    path: '/tabs',
+    name: 'tabs',
+    component: TabsView
   },
   {
     path: '/item/:id',

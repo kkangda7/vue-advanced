@@ -4,6 +4,8 @@
       <router-link to="/jobs">jobs</router-link> |
       <router-link to="/ask">ask</router-link> |
       <router-link to="/seach">seach</router-link> |
+      <router-link to="/pagenation">pagenation</router-link> |
+      <router-link to="/tabs">tabs</router-link> |
       <router-link to="/async">async</router-link>
     </div>
 </template>

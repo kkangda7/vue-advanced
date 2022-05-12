@@ -16,6 +16,7 @@
 import { ref } from 'vue'
 import axios from 'axios';
 import AsyncTable from '../components/AsyncTable.vue'
+import emiter from '@/utils/emiter'
 
 export default {
   components: {
@@ -29,8 +30,8 @@ export default {
 
     const loginUser = async () => {
       try {
+        emiter.emit('start:spinner')
         const response = await axios.get('http://jsonplaceholder.typicode.com/users/1');
-        console.log(response.data)
         users.value = response.data
         company.value = response.data.company
         address.value = response.data.address
@@ -38,6 +39,7 @@ export default {
           const response = await axios.get('http://jsonplaceholder.typicode.com/todos')
           todos.value = response.data
         }
+        emiter.emit('end:spinner')
       }
       catch(err) {
         console.log(err);

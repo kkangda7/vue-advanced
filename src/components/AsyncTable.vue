@@ -22,7 +22,7 @@
     <table>
       <tr>
         <th>id</th>
-        <th>title</th>s
+        <th>title</th>
         <th>completed</th>
       </tr>
       <tr v-for="todo in paginatedData" :key="todo">

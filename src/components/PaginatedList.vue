@@ -1,17 +1,17 @@
 <template>
-  <div>
+  <div class="wrapper">
     <table>
       <tr>
-        <th>NO</th>
+        <th>PHOTO</th>
+        <th>NAME</th>
         <th>TEL</th>
         <th>ADDRESS</th>
-        <th>NAME</th>
       </tr>
       <tr v-for="p in paginatedData" :key="p.no">
-        <td>{{ p.no }}</td>
+        <td><img :src="p.photo" alt="photo" width="58" height="58"></td>
+        <td>{{ p.name }}</td>
         <td>{{ p.tel }}</td>
         <td>{{ p.address }}</td>
-        <td>{{ p.name }}</td>
       </tr>
     </table>
     <div class="btn-cover">
@@ -79,6 +79,9 @@ export default {
 </script>
 
 <style scoped>
+.wrapper {
+  padding: 20px;
+}
 table {
   width: 100%;
   border-collapse: collapse;
@@ -95,7 +98,7 @@ table tr:first-of-type {
   border-top: 2px solid #404040;
 }
 table tr td {
-  padding: 1rem 0;
+  padding: 0.2rem 0;
   font-size: 1.1rem;
 }
 .btn-cover {
@@ -109,5 +112,8 @@ table tr td {
 }
 .btn-cover .page-count {
   padding: 0 1rem;
+}
+img {
+  vertical-align: middle;
 }
 </style>

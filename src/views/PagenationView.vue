@@ -8,6 +8,7 @@
 <script>
 import axios from 'axios'
 import PaginatedList from '../components/PaginatedList.vue'
+import emiter from '@/utils/emiter'
 import { ref } from '@vue/reactivity'
 export default {
   name: 'simple-pagination',
@@ -19,9 +20,10 @@ export default {
 
     const createdApi = async () => {
       try {
+        emiter.emit('start:spinner')
         const response = await axios.get('http://sample.bmaster.kro.kr/contacts')
-        console.log(response);
         pageArray.value = response.data.contacts;
+        emiter.emit('end:spinner')
       }
       catch(err) {
         console.log(err);
@@ -40,5 +42,6 @@ export default {
 h1 {
   color: #454545;
   text-align: center;
+  margin-bottom: 0;
 }
 </style>

@@ -65,7 +65,7 @@ export default {
     margin-top: -1px;
   }
   .contents li {
-    width: 320px;
+    width: inherit;
     padding: 20px;
     border: 1px solid #ccc;
   }

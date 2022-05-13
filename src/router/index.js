@@ -7,6 +7,7 @@ import UserView from '../views/UserView.vue'
 import SeachView from '../views/SeachView.vue'
 import AsyncView from '../views/AsyncView.vue'
 import PagenationView from '../views/PagenationView.vue'
+import TodoList from '../views/TodosList.vue'
 import TabsView from '../views/TabsView.vue'
 import emiter from '@/utils/emiter'
 import store from '@/store'
@@ -71,6 +72,11 @@ const routes = [
     path: '/pagenation',
     name: 'pagenation',
     component: PagenationView
+  },
+  {
+    path: '/todolist',
+    name: 'todolist',
+    component: TodoList
   },
   {
     path: '/tabs',

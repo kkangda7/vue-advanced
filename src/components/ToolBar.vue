@@ -6,6 +6,7 @@
       <router-link to="/seach">seach</router-link> |
       <router-link to="/pagenation">pagenation</router-link> |
       <router-link to="/tabs">tabs</router-link> |
+      <router-link to="/todolist">todo-list</router-link> |
       <router-link to="/async">async</router-link>
     </div>
 </template>

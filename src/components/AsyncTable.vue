@@ -28,7 +28,20 @@
       <tr v-for="todo in paginatedData" :key="todo">
         <td>{{ todo.id }}</td>
         <td>{{ todo.title }} </td>
-        <td>{{ todo.completed }} </td>
+        <td>        
+          <div class="form-check">
+            <input 
+              type="checkbox"
+              class="form-check-input"
+              v-model="todo.completed"
+            >
+            <label 
+              for=""
+              class="form-check-lable"
+            > {{ todo.completed }}
+            </label>
+          </div> 
+        </td>
       </tr>
     </table>
     <div class="btn-cover">

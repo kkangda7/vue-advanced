@@ -6,6 +6,7 @@ import {
   fetchUserList,
   fecthItemList
 } from '../api/index'
+import modules from './modules';
 
 export default createStore({
   state: {
@@ -13,13 +14,9 @@ export default createStore({
     asks: [],
     jobs: [],
     user: {},
-    item: {}
+    item: {},
   },
-  getters: {
-    // fecthedItem(state) {
-    //   return state.item;
-    // }
-  }, 
+  getters: {}, 
   mutations: {
     SET_NEWS(state, payload) {
       state.news = payload;
@@ -35,12 +32,12 @@ export default createStore({
     },
     SET_ITEM(state, payload) {
       state.item = payload
-    }
+    },
   },
   actions: {
-    async FETCH_NEWS(context) {
+    async FETCH_NEWS({commit}) {
       const response = await fetchNewsList();
-      context.commit('SET_NEWS', response.data)
+      commit('SET_NEWS', response.data)
       return response;
     },
     async FETCH_ASK({ commit }) {
@@ -82,6 +79,5 @@ export default createStore({
       })
     },
   },
-  modules: {
-  }
+  modules: modules
 })

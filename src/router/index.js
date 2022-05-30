@@ -8,13 +8,14 @@ import SeachView from '../views/SeachView.vue'
 import AsyncView from '../views/AsyncView.vue'
 import PagenationView from '../views/PagenationView.vue'
 import TodoList from '../views/TodosList.vue'
-import TabsView from '../views/TabsView.vue'
+import Todo from '@/pages/todos/_id.vue'
+import TodoCreate from '@/pages/todos/create/IndexView.vue'
 import emiter from '@/utils/emiter'
 import store from '@/store'
 
 const routes = [
   {
-    path: '/',
+    path: '/login',
     redirect: '/news'
   },
   {
@@ -24,8 +25,8 @@ const routes = [
     beforeEnter: (to, from, next) => {
       emiter.emit('start:spinner');
       store.dispatch('FETCH_NEWS', to.name)
-        .then(() => {
-          emiter.emit('end:spinner')
+      .then(() => {
+        emiter.emit('end:spinner')
           next();
         })
         .catch(err => console.log(err))
@@ -79,9 +80,14 @@ const routes = [
     component: TodoList
   },
   {
-    path: '/tabs',
-    name: 'tabs',
-    component: TabsView
+    path: '/todolist/create',
+    name: 'todoCreate',
+    component: TodoCreate
+  },
+  {
+    path: '/todolist/:id',
+    name: 'todo',
+    component: Todo
   },
   {
     path: '/item/:id',
